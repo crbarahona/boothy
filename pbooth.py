@@ -29,7 +29,7 @@ SCREEN_WIDTH     = 640
 SCREEN_HEIGHT    = 480
 IMAGE_WIDTH      = 640
 IMAGE_HEIGHT     = 480
-BUTTON_PIN       = 26
+BUTTON_PIN       = 18
 LED_PIN          = 19 #connected to external 12v.
 PHOTO_DELAY      = 8
 overlay_renderer = None
@@ -38,7 +38,7 @@ buttonEvent      = False
 #setup GPIOs
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(LED_PIN, GPIO.OUT)
+#GPIO.setup(LED_PIN, GPIO.OUT)
 
 #print the image
 def printPic(fileName):
@@ -116,7 +116,7 @@ def play():
     print "Created filename: "+fileName
 
     #turn on flash
-    GPIO.output(LED_PIN,GPIO.HIGH)
+    #GPIO.output(LED_PIN,GPIO.HIGH)
 
     countdownFrom(PHOTO_DELAY)
     captureImage(IMG1)
@@ -131,7 +131,7 @@ def play():
     time.sleep(1)
 
     #turn off flash
-    GPIO.output(LED_PIN,GPIO.LOW)
+    #GPIO.output(LED_PIN,GPIO.LOW)
 
     convertMergeImages(fileName)
     time.sleep(1)
@@ -202,7 +202,7 @@ with picamera.PiCamera() as camera:
     try:
         initLogger(logDir)
         initCamera(camera)
-        GPIO.output(LED_PIN,GPIO.LOW)
+        # GPIO.output(LED_PIN,GPIO.LOW)
         logging.info("Starting preview")
         camera.start_preview()
         addPreviewOverlay(20,200,55,"Press red button to begin!")
