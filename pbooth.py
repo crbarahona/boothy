@@ -30,7 +30,7 @@ SCREEN_HEIGHT    = 480
 IMAGE_WIDTH      = 640
 IMAGE_HEIGHT     = 480
 BUTTON_PIN       = 18
-LED_PIN          = 19 #connected to external 12v.
+# LED_PIN          = 19 #connected to external 12v.
 PHOTO_DELAY      = 8
 overlay_renderer = None
 buttonEvent      = False
@@ -101,7 +101,7 @@ def addPreviewOverlay(xcoord,ycoord,fontSize,overlayText):
     draw.text((xcoord,ycoord), overlayText, (255, 20, 147))
 
     if not overlay_renderer:
-        overlay_renderer = camera.add_overlay(img.tostring(),
+        overlay_renderer = camera.add_overlay(img.tobytes(),
                                               layer=3,
                                               size=img.size,
                                               alpha=128);
